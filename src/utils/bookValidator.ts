@@ -7,6 +7,7 @@ interface IBook {
     description: string;
     published_date: string;
     genre: string;
+    authorId?: number;
 }
 
 const schema: JSONSchemaType<IBook> = {
@@ -16,6 +17,7 @@ const schema: JSONSchemaType<IBook> = {
         description: { type: "string"},
         published_date: {type: "string"},
         genre: { type: "string"},
+        authorId: {type: "number", nullable: true}
     },
     required: ["title", "description", "published_date", "genre"]
 };

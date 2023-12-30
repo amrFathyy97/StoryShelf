@@ -18,7 +18,7 @@ export const getAllAuthors = asyncFN(
 export const createNewAuthor = asyncFN(
     async (req: Request, res: Response, next: NextFunction) => {
         const {first_name, last_name, nationality} = await req.body;
-        const author = await Author.create({first_name: first_name, last_name: last_name, nationality: nationality});
+        const author = await Author.create({first_name, last_name, nationality});
         return res.status(201).json({
             status: "OK",
             data: author.toJSON()

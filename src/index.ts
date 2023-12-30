@@ -10,10 +10,18 @@ import { db } from "./config/db.js";
 
 import { createAssociation } from "./config/association.js";
 
+import { errorHandler } from "./middlewares/errorHandling.js";
+
 // Routes
 
 import authorRouter from "./routes/authorRoute.js";
-import { errorHandler } from "./middlewares/errorHandling.js";
+
+import bookRouter from "./routes/bookRoute.js";
+
+import reviewRouter from "./routes/reviewRoute.js";
+
+import userRouter from "./routes/userRoute.js";
+
 
 dotenv.config();
 
@@ -38,6 +46,12 @@ app.use(express.json());
 // routes
 
 app.use("/author(s)?", authorRouter);
+
+app.use("/book(s)?", bookRouter);
+
+app.use("/review(s)?", reviewRouter);
+
+app.use("/user(s)?", userRouter);
 
 app.use(errorHandler)
 

@@ -4,14 +4,18 @@ const ajv = new Ajv();
 
 interface IReview {
     rating: number;
+    bookId: number;
+    userId: number;
 }
 
 const schema: JSONSchemaType<IReview> = {
     type: "object",
     properties: {
-        rating: {type: "number", minimum: 1, maximum: 5}
+        rating: {type: "number", minimum: 1, maximum: 5},
+        bookId: {type: "number", nullable: false},
+        userId: {type: "number", nullable: false},
     },
-    required: ["rating"]
+    required: ["rating", "bookId", "userId"]
 };
 
 
