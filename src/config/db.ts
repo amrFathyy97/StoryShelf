@@ -14,7 +14,6 @@ export const db = async () => {
         console.log('Connection has been established successfully.');
         await sequelize.sync();
         console.log("table has been successfully created.");
-
     }catch(err){
         console.error('Unable to connect to the database:', err);
     }

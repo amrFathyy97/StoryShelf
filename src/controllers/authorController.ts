@@ -1,6 +1,7 @@
 import {Request, Response, NextFunction} from "express";
 import { Author } from "../models/Author.js";
 import { asyncFN } from "../middlewares/asyncFN.js";
+import { CustomError } from "../middlewares/CustomError.js";
 
 
 
@@ -16,10 +17,11 @@ export const getAllAuthors = asyncFN(
 
 export const createNewAuthor = asyncFN(
     async (req: Request, res: Response, next: NextFunction) => {
-        const author = await Author.create({first_name: req.body.firstName, last_name: req.body.lastName, nationality: req.body.nationality});
+        const {first_name, last_name, nationality} = await req.body;
+        const author = await Author.create({first_name: first_name, last_name: last_name, nationality: nationality});
         return res.status(201).json({
             status: "OK",
             data: author.toJSON()
         });
     }
-)
+);
