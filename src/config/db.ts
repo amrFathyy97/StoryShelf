@@ -1,7 +1,6 @@
 import { Sequelize } from "sequelize";
 
 import dotenv from "dotenv";
-import { User } from "../models/User.js";
 
 dotenv.config();
 
@@ -13,8 +12,10 @@ export const db = async () => {
     try {
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
+        await sequelize.sync();
+        console.log("table has been successfully created.");
+
     }catch(err){
         console.error('Unable to connect to the database:', err);
     }
 };
-

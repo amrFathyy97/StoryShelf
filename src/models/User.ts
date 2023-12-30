@@ -1,10 +1,9 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/db.js";
 
-export const User = sequelize.define("User", {
+export const User = sequelize.define("users", {
     id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         primaryKey: true,
         autoIncrement: true,
     },
@@ -31,5 +30,17 @@ export const User = sequelize.define("User", {
             min: 5,
             max: 30
         }
+    },
+    isAdmin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
+    },
+    active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
     }
+},{
+    timestamps: false,
 })
